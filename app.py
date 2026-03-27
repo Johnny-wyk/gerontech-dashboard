@@ -159,11 +159,12 @@ st.markdown("<br>", unsafe_allow_html=True)
 # ==========================================
 # 标签页
 # ==========================================
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "1. 内部数据洞察 (Internal Analytics)", 
     "2. 需求热点与服务缺口 (Hotspots & Gaps)", 
-    "3. 未来 12 个月需求预测 (Demand Prediction)",
-    "4. 商业触达策略 (Outreach Strategy)"
+    "3. 用户画像与拒单分析 (User Personas)",
+    "4. 未来 12 个月需求预测 (Demand Prediction)",
+    "5. 商业触达策略 (Outreach Strategy)"
 ])
 
 # --- Tab 1: Internal Trends ---
@@ -272,8 +273,52 @@ with tab2:
     st.plotly_chart(fig_comp, use_container_width=True)
     st.caption("注：老龄化率与慢性病发病率等外部数据参考自香港特区政府统计处《人口推算 2022-2046》及相关公开资料。")
 
-# --- Tab 3: Prediction Model (重点回应评委疑问) ---
+# --- Tab 3: User Personas & Reject Analysis ---
 with tab3:
+    st.markdown('<div class="insight-box"><b>Data Insight:</b> 通过对历史工单及拒单原因（Reason for reject）的自然语言挖掘，我们发现核心阻力并非“价格”，而是“<b>长者固有的生活习惯</b>”以及“<b>居住空间（公屋/村屋）的物理限制</b>”。</div>', unsafe_allow_html=True)
+    
+    col_p1, col_p2 = st.columns([5, 5])
+    
+    with col_p1:
+        st.subheader("典型目标用户画像 (Typical Persona)")
+        st.markdown("""
+        **👤 基本属性 (Demographics)**
+        - **平均年龄**：**86.9 岁**（属于极高龄老人群体，80岁以上占比超 80%）
+        - **居住区域**：绝大多数居住在**新界**的普通楼宇（公屋/居屋）
+        - **教育水平**：数字素养极低（**小学或未受教育者占比超 70%**）
+        
+        **🦽 需求痛点 (Pain Points)**
+        - **身体机能**：活动能力极差，高比例处于**卧床**状态，或需依赖重型助行器（助行架/轮椅）
+        - **认知状况**：约 **25%** 存在记忆衰退或认知混乱
+        - **设备偏好**：移动辅助类（轮椅/助行架）与卧床护理类是绝对刚需。
+        """)
+        
+        st.info("⚠️ **核心触达屏障 (The Barrier)**\n\n真正的决策者往往是**子女或配偶**。长者本人极度抗拒改变（不想放多件东西在屋企），且受限于香港狭小的厕所/居住空间，导致大量卫浴改造（扶手/淋浴椅）的潜在需求在 OT（职业治疗师）评估后被放弃。")
+
+    with col_p2:
+        st.subheader("关键拒单原因分析 (Reasons for Rejection)")
+        
+        # 构建拒单原因的数据
+        reject_data = pd.DataFrame({
+            'Reason': ['观念/习惯 (婉拒/拒改变)', '已有替代 (购买/借用)', '环境限制 (空间不足)', '身体状况变化 (离世/住院)'],
+            'Count': [13, 12, 5, 5]
+        })
+        
+        fig_reject = px.bar(reject_data, x='Count', y='Reason', orientation='h',
+                           color='Reason', 
+                           color_discrete_sequence=['#ff4b4b', '#ffa600', '#0066cc', '#808080'],
+                           title="基于文本挖掘的拒单原因归类")
+        fig_reject.update_layout(showlegend=False, margin=dict(l=20, r=20, t=40, b=20), yaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(fig_reject, use_container_width=True)
+        
+        st.markdown("""
+        **💡 商业优化启示：**
+        1. **空间受限 (5宗)**：针对香港蜗居环境，采购端需引入更多**折叠式、多功能合一**的微型乐龄科技产品。
+        2. **观念拒绝 (13宗)**：营销话术不能说“你需要用”，而应通过“先试后租”的流动体验车，降低心理防线。
+        """)
+
+# --- Tab 4: Prediction Model (重点回应评委疑问) ---
+with tab4:
     st.markdown("### 基于机器学习的未来 12 个月设备需求预测")
     
     st.markdown("""
@@ -309,8 +354,8 @@ with tab3:
     else:
         st.warning("该设备历史数据不足，无法生成可靠预测。")
 
-# --- Tab 4: Outreach Strategy ---
-with tab4:
+# --- Tab 5: Outreach Strategy ---
+with tab5:
     st.markdown("### 基于数据的商业触达战略 (Data-Driven Outreach Strategy)")
     
     st.info("基于前三个 Tab 中揭示的**「末期照护刚需特征」**、**「区域渗透率倒挂现象」**以及**「未来爆发性增长预测」**，我们为『迎进』乐龄科技提出以下三大战略支柱，以实现精准触达 (How to Reach)：")
