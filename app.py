@@ -169,7 +169,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 
 # --- Tab 1: Internal Trends ---
 with tab1:
-    st.markdown('<div class="insight-box"><b>Data Insight:</b> 从 2020 年至今，轮椅和护理床一直是绝对刚需。值得注意的是，超过半数的设备归还原因是“长者离世”或“入住安老院舍”，这说明我们的服务主要覆盖了长者生命周期的最后阶段（End-of-life care）。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="insight-box"><b>Data Insight:</b> 从 2020 年至今，轮椅和护理床一直是绝对刚需。但超过半数的归还原因是“长者离世”或“入住安老院舍”，这说明我们的服务介入太晚（End-of-life care）。<b>战略方向：我们必须通过“早筛查、早介入”，将乐龄科技的受众从“失能长者”提前扩大到“亚健康/初老群体”，从而大幅延长设备的使用生命周期。</b></div>', unsafe_allow_html=True)
     
     col_a, col_b = st.columns([6, 4])
     with col_a:
@@ -374,14 +374,14 @@ with tab5:
         """)
         
     with col_s2:
-        st.markdown("#### 2. AI 驱动的需求前置匹配")
+        st.markdown("#### 2. AI 驱动的长尾设备捆绑推荐 (Cross-Selling)")
         st.markdown("""
         **如何应用技术 (How it works)**：
-        - **AI 聚类与预测**：整合 Tab 3 的用户画像与 Tab 4 的时间序列模型。当新用户（或通过医院 OT 转介的用户）录入系统时，AI 模型根据其“年龄、病历、居住公屋面积”自动打分。
-        - **精准推荐**：针对香港狭小空间（拒单痛点），AI 会自动向社工推荐“折叠款”或“多功能”设备，而非标准尺寸设备。
+        - **痛点解决**：针对 Tab 1 中占比极低的长尾设备（如防跌感应器、特殊沐浴椅），利用关联规则挖掘算法（Association Rules/协同过滤）。
+        - **智能组合 (Bundling)**：当用户（或 OT）在系统申请高频刚需设备（如护理床）时，AI 会根据其病历和房屋面积，自动推荐高匹配度的低频智能设备作为“安全升级包”。
         
         **商业/社会效益 (Business Benefit)**：
-        将以往基于“经验”的被动等待，升级为**“货找人”的智能前置匹配**。大幅降低由于“环境不符”或“长者习惯”导致的退单率，提升匹配精准度。
+        将以往被动等待租赁的冷门设备，通过与高频设备的“搭售 (Cross-selling)”，**强行激活长尾库存的利用率**，让 NGO 采购的智能设备真正发挥价值。
         """)
         
     with col_s3:
