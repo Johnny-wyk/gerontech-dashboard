@@ -172,7 +172,7 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 
 # --- Tab 1: Internal Trends ---
 with tab1:
-    st.markdown('<div class="insight-box"><b>Data Insight:</b> 从 2020 年至今，轮椅和护理床一直是绝对刚需。但超过半数的归还原因是“长者离世”或“入住安老院舍”，这说明我们的服务介入太晚（End-of-life care）。<b>战略方向：我们必须通过“早筛查、早介入”，将乐龄科技的受众从“失能长者”提前扩大到“亚健康/初老群体”，从而大幅延长设备的使用生命周期。</b></div>', unsafe_allow_html=True)
+    st.markdown('<div class="insight-box"><b>P1 核心洞察 (Problem Definition):</b> 我们面对的不是单纯的“设备短缺”，而是<b>“数据碎片化 + 需求识别不准 + 设备流通低效 + 触达链路断裂”</b>。热门设备（护理床/轮椅）被长期占用，而低频设备（防跌/防游走）因未被有效触达而闲置。</div>', unsafe_allow_html=True)
     
     col_a, col_b = st.columns([6, 4])
     with col_a:
@@ -278,7 +278,7 @@ with tab2:
 
 # --- Tab 3: Current User Personas & Reject Analysis ---
 with tab3:
-    st.markdown('<div class="insight-box"><b>Data Insight:</b> 通过对历史工单及拒单原因（Reason for reject）的自然语言挖掘，我们发现核心阻力并非“价格”，而是“<b>长者固有的生活习惯</b>”以及“<b>居住空间（公屋/村屋）的物理限制</b>”。</div>', unsafe_allow_html=True)
+    st.markdown('<div class="insight-box"><b>P2 & P3 核心洞察:</b> 很多产品并非没有需求，而是没有以“场景”进入决策链。被拒绝的原因往往是<b>“家属拒绝、已有替代、空间不适配或不愿改变习惯”</b>。两类关键用户：一是“有需求但不主动”的同住高龄长者，二是“需求已被识别但未成功转化”的拒单长者。</div>', unsafe_allow_html=True)
     
     col_p1, col_p2 = st.columns([5, 5])
     
@@ -296,7 +296,7 @@ with tab3:
         - **设备偏好**：移动辅助类（轮椅/助行架）与卧床护理类是绝对刚需。
         """)
         
-        st.info("⚠️ **核心触达屏障 (The Barrier)**\n\n真正的决策者往往是**子女或配偶**。长者本人极度抗拒改变（不想放多件东西在屋企），且受限于香港狭小的厕所/居住空间，导致大量卫浴改造（扶手/淋浴椅）的潜在需求在 OT（职业治疗师）评估后被放弃。")
+        st.info("⚠️ **核心触达屏障 (The Barrier)**\n\n真正的决策者往往是**年轻子女或老伴**。用户不会主动搜索特定产品，而是面临具体场景（如洗澡不安全、夜间易跌倒）。受限于香港狭小空间和传统观念，大量需求在评估后流失。")
 
     with col_p2:
         st.subheader("关键拒单原因分析 (Reasons for Rejection)")
@@ -316,8 +316,8 @@ with tab3:
         
         st.markdown("""
         **💡 商业优化启示：**
-        1. **空间受限 (5宗)**：针对香港蜗居环境，采购端需引入更多**折叠式、多功能合一**的微型乐龄科技产品。
-        2. **观念拒绝 (13宗)**：营销话术不能说“你需要用”，而应通过“先试后租”的流动体验车，降低心理防线。
+        1. **从“卖单品”到“卖场景”**：不再单推“浴缸扶手”，而是打包为“洗澡安全包”、“夜间如厕安全包”。
+        2. **解决空间与决策限制**：引入AI空间评估筛掉不适配器材；通过先试后租降低观念防线。
         """)
 
 # --- Tab 4: Core Personas (从 HTML 加载) ---
@@ -374,40 +374,51 @@ with tab5:
 
 # --- Tab 6: Outreach Strategy ---
 with tab6:
-    st.markdown("### 基于 IoT 与 AI 的「智能图书馆」资源循环战略 (The Library Model Strategy)")
+    st.markdown("### 基于 AI 与 IoT 的居家安老运营平台闭环战略")
     
-    st.info("💡 **核心战略重塑 (Strategy Redefined):**\n作为非营利机构 (NGO)，我们的核心挑战并非“缺乏设备”，而是**严重的供需错配导致的极低利用率**。为了解决这个问题，我们提出了**「乐龄科技智能图书馆模型 (The Smart Library Model)」**：不追求卖出多少设备，而是追求每一台设备如何通过统一数据平台、IoT 监测与 AI 匹配，实现**最高效的循环借阅与流转**。")
+    st.info("💡 **核心战略重塑 (P4 & P5):**\n从传统的“设备租赁”升级为**“AI + IoT 驱动的居家安老运营平台”**。核心在于构建闭环：**需求输入 → AI 推荐 → 场景套餐 → 快速试租 → IoT 监测 → 自动续租 / 回收**。")
     
     col_s1, col_s2, col_s3 = st.columns(3)
     
     with col_s1:
-        st.markdown("#### 1. 统一数据平台 (Unified Data Hub)")
+        st.markdown("#### 1. AI 驱动的需求与空间匹配")
         st.markdown("""
-        **当前痛点**：目前社联的数据收集极其碎片化（Excel表、社工手写记录、医院纸质转介单），导致字段不统一，组织无法实时监控全局。
-        
-        **具体行动 (Concrete Action)**：
-        - 建立基于云端的 **Customer Data Platform (CDP)**，强制统一所有来源的数据字段（如必须包含：长者身分证前四位、精准经纬度、居住面积、主要病历 ICD-10 编码）。
-        - 所有外勤社工配备统一的移动端 App，实现无纸化录入。本看板即作为该 CDP 的**实时监控大屏**，供管理层随时调取各区实时缺口数据。
+        **解决“不会选、放不下”痛点**：
+        - **AI 需求识别**：用户只描述场景（如“晚上起身容易跌倒”），系统自动识别风险并推荐 2-3 个方案。
+        - **AI 空间评估**：用户上传家居照片，系统自动筛除尺寸不适配的器材，减少服务承接失败。
+        - **场景化产品组合**：告别单品目录，推出**“洗澡安全包”、“夜间如厕安全包”、“出院过渡包”**等场景套餐。
         """)
         
     with col_s2:
-        st.markdown("#### 2. IoT 驱动的「图书到期」回收机制")
+        st.markdown("#### 2. 营销策略：按决策者分层触达")
         st.markdown("""
-        **核心概念**：借鉴图书馆的“逾期催还”机制，解决设备“一借就失联”的沉睡问题。
-        
-        **具体行动 (Concrete Action)**：
-        - 在高价值设备（如护理床、轮椅）植入 **NB-IoT 重力/位移传感器**。
-        - **数据触发规则**：当系统监测到某台设备**连续 14 天处于静止状态（闲置）**，或长者已转入安老院舍（通过医院系统 API 对接），系统会自动向负责该区域的社工发送「回收指令单」。
-        - **商业效益**：将设备的平均流转周期缩短 30%，用有限的库存服务更多有真实需求的长者。
+        **同一个需求，三套触达方式**：
+        - **年轻子女 (45-60岁)**：通过 Facebook/WhatsApp 精准投放。核心信息：**“减轻你的照护负担”**，直达 AI 试租入口。
+        - **老人或配偶 (60-70岁)**：通过社区体验日、志愿者代登记。核心信息：**“简单、有人教、先试再租”**。
+        - **高龄长者 (80+岁)**：不依赖广告，将设备推荐嵌入医院出院流程、DHC 及 NGO 家访转介网络中。
         """)
         
     with col_s3:
-        st.markdown("#### 3. 极度具体的分层精准营销")
+        st.markdown("#### 3. IoT 监测与统一数据平台")
         st.markdown("""
-        **告别空洞，具体的触达方案 (Concrete Action)**：
-        - **针对“隐蔽长者” (不触网)**：锁定 Tab 2 中“渗透率倒挂最严重”的**观塘区翠屏邨**和**深水埗区苏屋邨**。在每年 11 月（冬季跌倒高发期前），联合当地「地区康健中心 (DHC)」在屋邨大堂举办为期 3 天的“乐龄科技流动体验展”，主打**“先试后借”**。
-        - **针对“中年子女” (真实买单人)**：在 Facebook Ads 上设定极其具体的定向条件：**年龄 45-60岁 + 兴趣包含“老人科/护老者/保健品” + 地理围栏 (Geofencing) 框定在新界东及九龙东**。广告文案抛弃“让老人更舒服”，改为：“**每月$200，立刻告别帮阿爸冲凉时的腰酸背痛（配智能淋浴椅动图）**”。
+        **解决设备不流通与数据碎片化**：
+        - **IoT 智能回收**：在高价值设备（护理床/轮椅）植入 NB-IoT 传感器。若连续 14 天静止，系统自动生成回访/回收指令。
+        - **建立 CDP 统一数据平台**：强制统一所有渠道的数据字段，实现动态库存调度，提升设备流转率。
+        - **预期效果**：短期提高低频设备试租率；中期提升高价值设备周转效率；长期形成数据闭环。
         """)
+
+    st.markdown("---")
+    st.markdown("### 预期效果与落地路径 (Roadmap & Outcomes)")
+    col_r1, col_r2, col_r3 = st.columns(3)
+    with col_r1:
+        st.markdown("**短期 (Short-term)**\n- 提高低使用率设备的曝光率与试租率\n- 提高家庭决策链中的转化率\n- 用场景包替代单品目录，降低认知成本")
+    with col_r2:
+        st.markdown("**中期 (Mid-term)**\n- 提高护理床、轮椅等高价值设备的回收与周转效率\n- 优化热点区域与缺口区域的资源调配\n- 通过 IoT 数据减少闲置")
+    with col_r3:
+        st.markdown("**长期 (Long-term)**\n- 建立统一数据平台，完成数据标准化\n- 形成需求预测、智能推荐、动态库存调度闭环")
+    
+    st.markdown("<div style='text-align: center; margin-top: 30px; padding: 20px; background-color: #0066cc; color: white; border-radius: 8px;'><b>Final Message:</b> We are not just renting devices. We are building a smarter system that helps the right device reach the right family at the right time.</div>", unsafe_allow_html=True)
+
 
 
 
