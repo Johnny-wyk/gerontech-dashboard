@@ -164,10 +164,10 @@ st.markdown("<br>", unsafe_allow_html=True)
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "1. 内部数据洞察 (Internal Analytics)", 
     "2. 需求热点与服务缺口 (Hotspots & Gaps)", 
-    "3. 用户画像与拒单分析 (User Personas)",
-    "4. 未来 12 个月需求预测 (Demand Prediction)",
-    "5. 商业触达策略 (Outreach Strategy)",
-    "6. 核心用户画像 (Core Personas)"
+    "3. 当前用户画像分析 (User Personas)",
+    "4. 核心用户画像 (Core Personas)",
+    "5. 未来 12 个月需求预测 (Demand Prediction)",
+    "6. 商业触达策略 (Outreach Strategy)"
 ])
 
 # --- Tab 1: Internal Trends ---
@@ -276,7 +276,7 @@ with tab2:
     st.plotly_chart(fig_comp, use_container_width=True)
     st.caption("注：老龄化率与慢性病发病率等外部数据参考自香港特区政府统计处《人口推算 2022-2046》及相关公开资料。")
 
-# --- Tab 3: User Personas & Reject Analysis ---
+# --- Tab 3: Current User Personas & Reject Analysis ---
 with tab3:
     st.markdown('<div class="insight-box"><b>Data Insight:</b> 通过对历史工单及拒单原因（Reason for reject）的自然语言挖掘，我们发现核心阻力并非“价格”，而是“<b>长者固有的生活习惯</b>”以及“<b>居住空间（公屋/村屋）的物理限制</b>”。</div>', unsafe_allow_html=True)
     
@@ -320,8 +320,23 @@ with tab3:
         2. **观念拒绝 (13宗)**：营销话术不能说“你需要用”，而应通过“先试后租”的流动体验车，降低心理防线。
         """)
 
-# --- Tab 4: Prediction Model (重点回应评委疑问) ---
+# --- Tab 4: Core Personas (从 HTML 加载) ---
 with tab4:
+    st.markdown("### 核心用户画像与特征分布")
+    
+    # 读取并展示 HTML 文件
+    try:
+        with open("user_personas.html", "r", encoding="utf-8") as f:
+            html_content = f.read()
+            
+        # 使用 Streamlit Components 渲染 HTML
+        # height 根据实际内容长度调整，这里设为 1200 保证显示完整，开启滚动
+        components.html(html_content, height=1200, scrolling=True)
+    except Exception as e:
+        st.error(f"无法加载用户画像页面。错误信息：{str(e)}")
+
+# --- Tab 5: Prediction Model (重点回应评委疑问) ---
+with tab5:
     st.markdown("### 基于机器学习的未来 12 个月设备需求预测")
     
     st.markdown("""
@@ -357,8 +372,8 @@ with tab4:
     else:
         st.warning("该设备历史数据不足，无法生成可靠预测。")
 
-# --- Tab 5: Outreach Strategy ---
-with tab5:
+# --- Tab 6: Outreach Strategy ---
+with tab6:
     st.markdown("### 基于 IoT 与 AI 的「智能图书馆」资源循环战略 (The Library Model Strategy)")
     
     st.info("💡 **核心战略重塑 (Strategy Redefined):**\n作为非营利机构 (NGO)，我们的核心挑战并非“缺乏设备”，而是**严重的供需错配导致的极低利用率**。为了解决这个问题，我们提出了**「乐龄科技智能图书馆模型 (The Smart Library Model)」**：不追求卖出多少设备，而是追求每一台设备如何通过统一数据平台、IoT 监测与 AI 匹配，实现**最高效的循环借阅与流转**。")
@@ -394,18 +409,5 @@ with tab5:
         - **针对“中年子女” (真实买单人)**：在 Facebook Ads 上设定极其具体的定向条件：**年龄 45-60岁 + 兴趣包含“老人科/护老者/保健品” + 地理围栏 (Geofencing) 框定在新界东及九龙东**。广告文案抛弃“让老人更舒服”，改为：“**每月$200，立刻告别帮阿爸冲凉时的腰酸背痛（配智能淋浴椅动图）**”。
         """)
 
-# --- Tab 6: Core Personas ---
-with tab6:
-    st.markdown("### 核心用户画像与特征分布")
-    
-    # 读取并展示 HTML 文件
-    try:
-        with open("user_personas.html", "r", encoding="utf-8") as f:
-            html_content = f.read()
-            
-        # 使用 Streamlit Components 渲染 HTML
-        # height 根据实际内容长度调整，这里设为 1200 保证显示完整，开启滚动
-        components.html(html_content, height=1200, scrolling=True)
-    except Exception as e:
-        st.error(f"无法加载用户画像页面。错误信息：{str(e)}")
+
 
