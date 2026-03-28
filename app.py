@@ -7,6 +7,8 @@ import folium
 from streamlit_folium import st_folium
 from prophet import Prophet
 
+import streamlit.components.v1 as components
+
 # ==========================================
 # 页面与样式配置 (UI/UX 优化)
 # ==========================================
@@ -159,12 +161,13 @@ st.markdown("<br>", unsafe_allow_html=True)
 # ==========================================
 # 标签页
 # ==========================================
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "1. 内部数据洞察 (Internal Analytics)", 
     "2. 需求热点与服务缺口 (Hotspots & Gaps)", 
     "3. 用户画像与拒单分析 (User Personas)",
     "4. 未来 12 个月需求预测 (Demand Prediction)",
-    "5. 商业触达策略 (Outreach Strategy)"
+    "5. 商业触达策略 (Outreach Strategy)",
+    "6. 核心用户画像 (Core Personas)"
 ])
 
 # --- Tab 1: Internal Trends ---
@@ -390,3 +393,19 @@ with tab5:
         - **针对“隐蔽长者” (不触网)**：锁定 Tab 2 中“渗透率倒挂最严重”的**观塘区翠屏邨**和**深水埗区苏屋邨**。在每年 11 月（冬季跌倒高发期前），联合当地「地区康健中心 (DHC)」在屋邨大堂举办为期 3 天的“乐龄科技流动体验展”，主打**“先试后借”**。
         - **针对“中年子女” (真实买单人)**：在 Facebook Ads 上设定极其具体的定向条件：**年龄 45-60岁 + 兴趣包含“老人科/护老者/保健品” + 地理围栏 (Geofencing) 框定在新界东及九龙东**。广告文案抛弃“让老人更舒服”，改为：“**每月$200，立刻告别帮阿爸冲凉时的腰酸背痛（配智能淋浴椅动图）**”。
         """)
+
+# --- Tab 6: Core Personas ---
+with tab6:
+    st.markdown("### 核心用户画像与特征分布")
+    
+    # 读取并展示 HTML 文件
+    try:
+        with open("user_personas.html", "r", encoding="utf-8") as f:
+            html_content = f.read()
+            
+        # 使用 Streamlit Components 渲染 HTML
+        # height 根据实际内容长度调整，这里设为 1200 保证显示完整，开启滚动
+        components.html(html_content, height=1200, scrolling=True)
+    except Exception as e:
+        st.error(f"无法加载用户画像页面。错误信息：{str(e)}")
+
