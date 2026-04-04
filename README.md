@@ -1,8 +1,10 @@
 Project: IoT & AI Solution for Hong Kong Elderly Assistive Device Rental (IoT Competition Award-Winning Project)
+
 Description:Tackled core challenges of inefficient demand matching, low asset utilization, and insufficient market penetration in Hong Kong's home care assistive device rental industry, completed in-depth analysis and full-case design based on real enterprise business data, and won the IoT competition.
 Built a Streamlit data dashboard based on internal rental data, user persona data, and external Hong Kong census data, completing panoramic business analysis:
 Decomposed core KPIs including device rental trends, category structure, user age distribution, return reasons, and regional penetration, identifying business growth opportunities and optimization directions;
 Completed user persona analysis, extracting demand characteristics, living scenarios, and conversion pain points of two core user groups, providing data support for product and marketing solutions.
+
 Designed a dual-engine AI & IoT solution:
 AI demand matching engine: Converted user home scenarios into standardized assistive device solutions through multimodal input such as voice and images, solving the problems of delayed demand recognition and inefficient matching;
 IoT asset circulation system: Realized full lifecycle management of devices through NB-IoT modules, enabling automated monitoring, maintenance, and reallocation, improving asset turnover efficiency and reducing operational costs.
