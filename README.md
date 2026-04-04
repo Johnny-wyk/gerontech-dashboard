@@ -9,3 +9,7 @@ Designed a dual-engine AI & IoT solution:
 AI demand matching engine: Converted user home scenarios into standardized assistive device solutions through multimodal input such as voice and images, solving the problems of delayed demand recognition and inefficient matching;
 IoT asset circulation system: Realized full lifecycle management of devices through NB-IoT modules, enabling automated monitoring, maintenance, and reallocation, improving asset turnover efficiency and reducing operational costs.
 Formulated a tiered marketing strategy based on user segmentation and market data, designing differentiated core messages and outreach channels for user groups with different decision-making power, achieving precise customer acquisition and conversion, and providing a complete business strategy for implementation.
+<img width="1900" height="833" alt="image" src="https://github.com/user-attachments/assets/23056a3e-09a7-4f65-93a5-c05a4a5d9417" />
+
+<img width="1862" height="774" alt="image" src="https://github.com/user-attachments/assets/d5fcdf24-c890-426c-93a6-0d10b93e01cc" />
+
